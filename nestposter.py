@@ -24,6 +24,7 @@ parser.add_argument('--header', help='Header for post', required=True)
 parser.add_argument('--footer', help='Footer for post', required=True)
 parser.add_argument('--token', help='Discord Bot Token', required=True)
 parser.add_argument('--nest-channel', help='Channel ID to post into', type=int, required=True)
+parser.add_argument('--min-average', help='min average needed to include', type=int, required=True, default=3)
 
 options = parser.parse_args()
 
@@ -61,7 +62,10 @@ async def main():
         # prepare a cursor object using cursor() method
         c = db.cursor()
         # execute SQL query using execute() method.
-        c.execute("""SELECT p.name as "Park Name", d.pokemon, p.pokemon_count as "Total Seen", format(p.pokemon_avg,0) FROM monman.nests p LEFT JOIN pokedex.pokedex d ON p.pokemon_id = d.pokemon_id where p.pokemon_avg ORDER BY p.pokemon_count DESC;""")
+        sql_select_query = """SELECT p.name as "Park Name", d.pokemon, p.pokemon_count as "Total Seen", format(p.pokemon_avg,0) FROM {}.nests p LEFT JOIN pokedex.pokedex d ON p.pokemon_id = d.pokemon_id where p.pokemon_avg > {} ORDER BY p.pokemon_count DESC;"""
+        print(sql_select_query.format(options.db_name,options.min_average))
+        c.execute(sql_select_query.format(options.db_name,options.min_average))
+        #c.execute("""SELECT p.name as "Park Name", d.pokemon, p.pokemon_count as "Total Seen", format(p.pokemon_avg,0) FROM {options.db_name}.nests p LEFT JOIN pokedex.pokedex d ON p.pokemon_id = d.pokemon_id where p.pokemon_avg ORDER BY p.pokemon_count DESC;""")
         # Fetch a single row using fetchone() method.
         data = c.fetchall()
         print (data)

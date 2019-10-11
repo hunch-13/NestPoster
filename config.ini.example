@@ -7,3 +7,4 @@ header: **Park Name**-Pokemon(Total Since Nest Change)-*Hourly Avg*             
 footer: www.example.com            # Required - but can be blank
 nest-channel:                           #Discord channel to post to - make sure bot has perms
 token:                             #Discord bot token
+min-average:                       # Required, set high if you don't care
