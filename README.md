@@ -8,9 +8,11 @@ Prereqs:
 
 To configure:
 
-1. Adjust "nestscript" db connection to point to where you are storing your nest data (likely in the 2nd db for pmfs-alt), no need to adjust other 2 as they are not used
+1. copy config.ini.example to config.ini and adjust parameters
 
-2. Adjust '**DISCORD-CHANNEL-ID-GOES-HERE**' by pasting in the channel of the discord room you want to post in (ensure bot has write and delete permissions as script will purge old messages)
+2. Ensure bot has write and delete permissions as script will purge old messages
 
-3. Adjust 'DISCORD-BOT-TOKEN-HERE' , paste discord bot token.
+3. python nestposter.py to run, bot runs onces and exits
+
+
 
