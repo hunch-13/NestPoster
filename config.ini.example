@@ -1,0 +1,9 @@
+db-name: dbname                    # Required for mysql
+db-user: user                      # Required for mysql
+db-pass: password                  # Required for mysql
+db-host: 192.1.1.1                # Required for mysql (default=127.0.0.1)
+db-port: 3306                      # Required for mysql (default=3306) no used
+header: **Park Name**-Pokemon(Total Since Nest Change)-*Hourly Avg*              # Required
+footer: www.example.com            # Required - but can be blank
+nest-channel:                           #Discord channel to post to - make sure bot has perms
+token:                             #Discord bot token
