@@ -23,7 +23,7 @@ parser.add_argument('--db-port', help='Port for the database (defaults to 3306).
 parser.add_argument('--header', help='Header for post', required=True)
 parser.add_argument('--footer', help='Footer for post', required=True)
 parser.add_argument('--token', help='Discord Bot Token', required=True)
-parser.add_argument('--room', help='Channel ID to post into', type=int, required=True)
+parser.add_argument('--nest-channel', help='Channel ID to post into', type=int, required=True)
 
 options = parser.parse_args()
 
@@ -44,8 +44,8 @@ async def main():
     print("starting main...")
     await client.wait_until_ready()
     counter = 0
-    print(options.room)
-    channel = client.get_channel(options.room)
+    print(options.nest_channel)
+    channel = client.get_channel(options.nest_channel)
     print("Using Channel")
     print(channel)
     while not client.is_closed():
